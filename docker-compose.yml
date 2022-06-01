@@ -1,13 +1,18 @@
-version: "2"
+version: "3"
 services:
   php:
     build:
       context: ./php
     image: slime/php:fpm
     restart: always
+    environment:
+      - XDEBUG_CLIENT_HOST=host.docker.internal
+      - XDEBUG_CLIENT_PORT=9003
+      - XDEBUG_IDE_KEY=docker
     volumes:
-      - ./wwwroot:/var/www/html
+      - ./wwwroot:/var/www/html:cached
       - ./php/conf.d/custom.ini:/usr/local/etc/php/conf.d/custom.ini
+      - ./php/xdebug:/tmp/xdebug
     container_name: php_fpm_7
     
   db:
@@ -33,7 +38,7 @@ services:
       - db
       - php
     volumes:
-      - ./wwwroot:/var/www/html
+      - ./wwwroot:/var/www/html:cached
       - ./nginx/conf.d:/etc/nginx/conf.d
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
     ports:
