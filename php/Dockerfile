@@ -51,7 +51,7 @@ RUN sed -i "s@http://deb.debian.org@http://mirrors.ustc.edu.cn@g" /etc/apt/sourc
     && pecl install xdebug \
     && docker-php-ext-enable xdebug \
     && echo "\n \
-    xdebug.mode=debug\n \
+    xdebug.mode=develop,debug\n \
     xdebug.start_with_request=yes\n \
     xdebug.discover_client_host=false\n \
     xdebug.client_port=${XDEBUG_CLIENT_PORT}\n \
@@ -62,9 +62,9 @@ RUN sed -i "s@http://deb.debian.org@http://mirrors.ustc.edu.cn@g" /etc/apt/sourc
     " >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
     \
     # remove not necessary files
-    && rm -rf /var/lib/apt/lists/*
-
-RUN sed -i -e 's/listen.*/listen = 0.0.0.0:9000/' /usr/local/etc/php-fpm.conf
+    && rm -rf /var/lib/apt/lists/* \
+    \
+    && sed -i -e 's/listen.*/listen = 0.0.0.0:9000/' /usr/local/etc/php-fpm.conf
 
 #RUN usermod -u 1000 www-data
 

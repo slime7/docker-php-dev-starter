@@ -23,3 +23,6 @@ yarn-error.log*
 # mysql data and log
 /mysql/data
 /mysql/log
+
+# xdebug log
+/php/xdebug/xdebug-log.log
