@@ -48,7 +48,7 @@ RUN sed -i "s@http://deb.debian.org@http://mirrors.ustc.edu.cn@g" /etc/apt/sourc
     && pecl install imagick && docker-php-ext-enable imagick \
     \
     #install Xdebug ext
-    && pecl install xdebug \
+    && pecl install xdebug-3.1.5 \
     && docker-php-ext-enable xdebug \
     && echo "\n \
     xdebug.mode=develop,debug\n \
