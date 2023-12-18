@@ -9,6 +9,9 @@ services:
       - XDEBUG_CLIENT_HOST=host.docker.internal
       - XDEBUG_CLIENT_PORT=9003
       - XDEBUG_IDE_KEY=docker
+      - PUID=0
+      - PGID=0
+      - UMASK=022
     volumes:
       - ./wwwroot:/var/www/html:cached
       - ./php/conf.d/custom.ini:/usr/local/etc/php/conf.d/custom.ini

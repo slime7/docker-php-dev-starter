@@ -10,7 +10,9 @@
 
 3. 在浏览器中访问 `http://localhost:8080/` 即可看到 phpinfo 信息。
 
-- (可选，windows) 使用 `./composer` 可使用 docker 内 composer 代替本地安装执行 composer 命令。
+- ~~(可选，windows) 使用 `./composer` 可使用 docker 内 composer 代替本地安装执行 composer 命令。~~
+
+- 使用 composer 最好下载与 docker 内版本一致的可执行文件进行安装确保包的版本要求，并使用 `C:\php-7.4.33\php.exe C:\docker\wwwroot\example\composer.phar config repo.packagist composer https://mirrors.aliyun.com/composer/` 给项目设置国内镜像
 
 ## 设置
 
